@@ -106,7 +106,7 @@ func ApiDetailsGetById(id int) ([]*ApiDetails, error) {
 func ApiDetailGetList(page, pageSize int, filters ...interface{}) ([]*ApiDetail, int64) {
 	offset := (page - 1) * pageSize
 	list := make([]*ApiDetail, 0)
-	query := orm.NewOrm().QueryTable(TableName("api_detail"))
+	query := orm.NewOrm().QueryTable(TableName1("cur"))
 	if len(filters) > 0 {
 		l := len(filters)
 		for k := 0; k < l; k += 2 {

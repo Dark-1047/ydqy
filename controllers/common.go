@@ -27,14 +27,14 @@ const (
 
 type BaseController struct {
 	beego.Controller
-	controllerName string
-	actionName     string
-	user           *models.Admin
-	userId         int
-	userName       string
-	loginName      string
+	controllerName string        //控制器名称
+	actionName     string        //方法名称
+	user           *models.Admin //用户信息
+	userId         int           //用户ID
+	userName       string        //用户名
+	loginName      string        //登录名
 	pageSize       int
-	allowUrl       string
+	allowUrl       string //url
 }
 
 //前期准备

@@ -2,9 +2,9 @@
     <div class="layui-row" style="margin-top: 20px;">
         <div class="layui-col-xs6">
             <div class="layui-btn-group">
-              <button class="layui-btn" id="add_api">增加</button>
-              <button class="layui-btn" id="add_audit">提交审核</button>
-              <button class="layui-btn" id="audit">审核通过</button>
+              <button class="layui-btn" id="add_api">添加新客户</button>
+              <button class="layui-btn" id="add_audit">修改客户信息</button>
+              <button class="layui-btn" id="audit">删除客户</button>
             </div>
             <!-- <a class="layui-btn" data-type="tabAdd" href="/api/add">新增</a>  -->
             <!-- <a href="javascript:;" id="add_api" class="layui-btn"> 新增接口 </a>  
@@ -14,7 +14,7 @@
             <form class="layui-form" action="" onsubmit="javascript:return false;">
                 <div class="demoTable">
                     <div class="layui-inline" style="width: 40%">
-                        <input class="layui-input" name="apiName" id="apiName" autocomplete="off" placeholder="接口名称" >
+                        <input class="layui-input" name="apiName" id="apiName" autocomplete="off" placeholder="客户姓名" >
                     </div>
                     <div class="layui-inline" style="width: 20%;text-align: left;">
                         <select name="status" id="status" lay-verify="required"  lay-search="">
@@ -34,11 +34,9 @@
     </table>
 
     <script type="text/html" id="bar">
-        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">详细</a>
-        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-        <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="audit">审核</a>
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">启|停</a>
-
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">客户详情</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">修改信息</a>
+        <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="audit">删除客户</a>
     </script>
 </div>
 <script>
@@ -51,17 +49,17 @@
         //方法级渲染
         table.render({
             elem: '#table_list'
-            ,url: '/api/table'
+            ,url: '/customer/table'
             ,cols: [[
                 {checkbox: true, fixed: true},
-                {field:'id', title: 'ID', align:'center',sort: true, width:50}
-                ,{field:'api_name',title: '接口名称'}
-                ,{field:'api_url',title: '接口地址'}
-                ,{field:'method',title: '请求方式'}
-                ,{field:'source_name',title: '所属资源'}
-                ,{field:'status_text',title: '接口状态'}
-                ,{field:'create_time', title: '创建时间'}
-                ,{field:'update_time', title: '修改时间'}
+                {field:'customerId', title: 'ID', align:'center',sort: true, width:50}
+                ,{field:'customerName',title: '客户姓名'}
+                ,{field:'cPhone',title: '客户电话'}
+                ,{field:'cAdr',title: '客户地址'}
+                ,{field:'buyDate',title: '购买时间'}
+                ,{field:'cSum',title: '购买总额'}
+                ,{field:'remark', title: '备注'}
+               // ,{field:'update_time', title: '渠道'}
                 ,{fixed: 'right', width:260, align:'center', toolbar: '#bar'}
             ]]
             ,id: 'listReload'
@@ -81,7 +79,7 @@
         };
 
         $("#add_api").on("click",function() {
-            window.location.href="/api/add"
+            window.location.href="/customer/add"
         })
 
         //提交审核

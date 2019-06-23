@@ -35,14 +35,14 @@ type ApiController struct {
 }
 
 func (self *ApiController) List() {
-	self.Data["pageTitle"] = "API接口"
+	self.Data["pageTitle"] = "客户信息"
 	self.Data["ApiCss"] = true
 	self.Data["auditStatus"] = AUDIT_STATUS_TEXT
 	self.display()
 }
 
 func (self *ApiController) Table() {
-	//列表
+	//列表分页
 	page, err := self.GetInt("page")
 	if err != nil {
 		page = 1

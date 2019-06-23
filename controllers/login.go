@@ -51,7 +51,6 @@ func (self *LoginController) LoginIn() {
 				utils.Che.Set("uid"+strconv.Itoa(user.Id), user, cache.DefaultExpiration)
 				authkey := libs.Md5([]byte(self.getClientIp() + "|" + user.Password + user.Salt))
 				self.Ctx.SetCookie("auth", strconv.Itoa(user.Id)+"|"+authkey, 7*86400)
-
 				self.redirect(beego.URLFor("HomeController.Index"))
 			}
 			flash.Error(errorMsg)
